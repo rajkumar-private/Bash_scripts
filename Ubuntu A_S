@@ -1,0 +1,56 @@
+#!/bin/sh
+
+#apt install
+
+apt update
+apt upgrade -y
+apt install ssh -y
+apt install net-tools -y
+apt install wget -y
+apt install curl -y
+apt install apt-transport-https ca-certificates curl software-properties-common wget -y
+apt install vim -y
+apt install netstat -y
+apt-get install snapd -y
+#apt install kazam -y
+apt install imagemagick -y
+apt-get install notepadqq -y
+apt install vlc -y
+
+#get deb files
+
+wget -qO - https://keys.anydesk.com/repos/DEB-GPG-KEY | apt-key add -
+wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+wget https://go.skype.com/skypeforlinux-64.deb
+wget https://zoom.us/client/latest/zoom_amd64.deb
+wget https://github.com/rustdesk/rustdesk/releases/download/1.1.8/rustdesk-1.1.8.deb
+wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -
+
+
+#adding repo
+
+echo "deb http://deb.anydesk.com/ all main" | tee /etc/apt/sources.list.d/anydesk-stable.list
+echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' | tee /etc/apt/sources.list.d/google-chrome.list
+add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
+
+#updating repo
+
+apt update
+
+
+#installing apps
+
+apt install anydesk -y
+apt-get install google-chrome-stable -y
+apt install ./skypeforlinux-64.deb -y
+apt install ./zoom_amd64.deb -y
+apt install timeshift -y
+apt install code -y
+apt install obs-studio -y
+apt install ./rustdesk-1.1.8.deb -y 
+
+#removing files
+
+rm -rf skypeforlinux-64.deb
+rm -rf zoom_amd64.deb
+rm -rf rustdesk-1.1.8.deb
